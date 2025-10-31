@@ -23,7 +23,7 @@
 #include <set>
 #include <regex>
 #if defined(OS_MACOSX)
-#include <mach/mach.h>
+extern "C" #include <mach/mach.h>
 #endif
 #include <sys/syscall.h>                   // SYS_gettid
 #include "butil/scoped_lock.h"             // BAIDU_SCOPED_LOCK
