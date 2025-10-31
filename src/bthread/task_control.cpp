@@ -22,9 +22,6 @@
 #include <pthread.h>
 #include <set>
 #include <regex>
-#if defined(OS_MACOSX)
-extern "C" #include <mach/mach.h>
-#endif
 #include <sys/syscall.h>                   // SYS_gettid
 #include "butil/scoped_lock.h"             // BAIDU_SCOPED_LOCK
 #include "butil/errno.h"                   // berror
@@ -39,6 +36,9 @@ extern "C" #include <mach/mach.h>
 #include "bthread/timer_thread.h"         // global_timer_thread
 #include <gflags/gflags.h>
 #include "bthread/log.h"
+#if defined(OS_MACOSX)
+#include <mach/mach.h>
+#endif
 
 DEFINE_int32(task_group_delete_delay, 1,
              "delay deletion of TaskGroup for so many seconds");
